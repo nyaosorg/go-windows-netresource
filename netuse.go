@@ -51,6 +51,9 @@ func WNetAddConnection2(remote, local, user, pass string) (err error) {
 	return nil
 }
 
+// WNetCancelConnection2 cancels an existing network connection.
+//    update - true: updates connection as not a persistent one
+//    force - true: disconnect even if open process exists.
 func WNetCancelConnection2(name string, update bool, force bool) error {
 	_name, err := windows.UTF16PtrFromString(name)
 	if err != nil {
