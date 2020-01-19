@@ -9,6 +9,12 @@ import (
 var procWNetAddConnection2W = mpr.NewProc("WNetAddConnection2W")
 var procWNetCancelConnection = mpr.NewProc("WNetCancelConnection2W")
 
+// WNetAddConnection2 makes a connection to a network resource
+// and can redirect a local device to the network resource
+//     remote - UNC-Path like `\\localhost\C$`
+//     local - local-drive like `X:`
+//     user - username. When it is "", default username is used.
+//     pass - password. When it is "", default passwors is used.
 func WNetAddConnection2(remote, local, user, pass string) (err error) {
 	var rs NetResource
 
