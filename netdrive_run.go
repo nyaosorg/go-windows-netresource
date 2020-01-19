@@ -5,11 +5,11 @@ package main
 import (
 	"fmt"
 
-	"github.com/zetamatta/nyagos/dos"
+	"github.com/zetamatta/go-windows-netresource"
 )
 
 func main() {
-	netdrive, err := dos.GetNetDrives()
+	netdrive, err := netresource.GetNetDrives()
 	if err != nil {
 		panic(err.Error())
 	}
@@ -17,7 +17,7 @@ func main() {
 		fmt.Printf("net use %c: \"%s\"\n", d.Letter, d.Remote)
 	}
 
-	d, err := dos.FindVacantDrive()
+	d, err := netresource.FindVacantDrive()
 	if err != nil {
 		println(err)
 		return

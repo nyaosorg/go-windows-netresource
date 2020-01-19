@@ -3,15 +3,15 @@
 package main
 
 import (
-	"github.com/zetamatta/nyagos/dos"
+	"github.com/zetamatta/go-windows-netresource"
 )
 
 func main() {
-	err := dos.WNetAddConnection2(`\\localhost\C$`, "O:", "", "")
+	err := netresource.WNetAddConnection2(`\\localhost\C$`, "O:", "", "")
 	if err != nil {
 		println(err.Error())
 	}
-	err = dos.WNetCancelConnection2("O:", false, false)
+	err = netresource.WNetCancelConnection2("O:", false, false)
 	if err != nil {
 		println(err.Error())
 	}

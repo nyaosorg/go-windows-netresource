@@ -1,4 +1,4 @@
-package dos
+package netresource
 
 import (
 	"errors"

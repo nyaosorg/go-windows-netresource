@@ -3,13 +3,13 @@
 package main
 
 import (
-	"github.com/zetamatta/nyagos/dos"
+	"github.com/zetamatta/go-windows-netresource"
 )
 
 func main() {
 	machines := []string{}
 
-	err := dos.EnumFileServer(func(node *dos.NetResource) bool {
+	err := netresource.EnumFileServer(func(node *netresource.NetResource) bool {
 		machines = append(machines, node.RemoteName())
 		return true
 	})
@@ -19,8 +19,8 @@ func main() {
 
 	for _, name := range machines {
 		println("machine:", name)
-		if fs, err := dos.NewFileServer(name); err == nil {
-			fs.Enum(func(node *dos.NetResource) bool {
+		if fs, err := netresource.NewFileServer(name); err == nil {
+			fs.Enum(func(node *netresource.NetResource) bool {
 				println("  ", node.RemoteName())
 				return true
 			})

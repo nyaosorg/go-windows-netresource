@@ -1,4 +1,4 @@
-package dos
+package netresource
 
 //go:generate go run github.com/zetamatta/go-importconst
 //	<windows.h>
