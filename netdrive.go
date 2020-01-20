@@ -69,29 +69,33 @@ func FindVacantDrive() (uint, error) {
 //    drive - `X:`
 //    vol - `server\\path\...`
 // returns
-//    func() - function release the drive
+//    func(update,force) - function release the drive
+//        update - true: updates connection as not a persistent one
+//        force - true: disconnect even if open process exists.
 //    error
-func NetUse(drive, vol string) (func(), error) {
+func NetUse(drive, vol string) (func(bool, bool), error) {
 	if err := WNetAddConnection2(vol, drive, "", ""); err != nil {
-		return func() {}, err
+		return func(bool, bool) {}, err
 	}
-	return func() { WNetCancelConnection2(drive, false, false) }, nil
+	return func(update, force bool) {
+		WNetCancelConnection2(drive, update, force)
+	}, nil
 }
 
 // UNCtoNetDrive replace UNCPath to path using netdrive.
 //    uncpath - for example \\server\path\folder\name
 // returns
 //    newpath - X:\folder\name
-func UNCtoNetDrive(uncpath string) (newpath string, closer func()) {
+func UNCtoNetDrive(uncpath string) (newpath string, closer func(bool, bool)) {
 	vol := filepath.VolumeName(uncpath)
 	d, err := FindVacantDrive()
 	if err != nil {
-		return "", func() {}
+		return "", func(bool, bool) {}
 	}
 	netdrive := string([]byte{byte(d), ':'})
 	newpath = filepath.Join(netdrive, uncpath[len(vol):])
 	if closer, err = NetUse(netdrive, vol); err != nil {
-		return "", func() {}
+		return "", func(bool, bool) {}
 	} else {
 		return newpath, closer
 	}
