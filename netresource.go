@@ -75,6 +75,7 @@ func (nr *NetResource) ModTime() time.Time { return time.Time{} }
 func (nr *NetResource) IsDir() bool        { return true }
 func (nr *NetResource) Sys() interface{}   { return nr }
 
+// NetResourceHandle is compatible type with "net/http".File
 type NetResourceHandle struct {
 	handle      uintptr
 	netresource *NetResource
@@ -175,6 +176,7 @@ var rxServerPattern = regexp.MustCompile(`^\\\\[^\\/]+$`)
 
 var netlock sync.RWMutex
 
+// EnumFileServer lists up file-servers.
 func EnumFileServer(callback func(*NetResource) bool) error {
 	var me func(*NetResource) bool
 	var wg sync.WaitGroup
@@ -198,6 +200,7 @@ func EnumFileServer(callback func(*NetResource) bool) error {
 	return err
 }
 
+// NewFileServer is constructor of NetResource for FileServer's root node.
 func NewFileServer(name string) (*NetResource, error) {
 	if !strings.HasPrefix(name, `\\`) {
 		name = `\\` + name

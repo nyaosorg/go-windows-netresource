@@ -52,6 +52,7 @@ func GetNetDrives() ([]*NetDrive, error) {
 	return result, nil
 }
 
+// FindVacantDrive returns the last unused drive like 'Z'
 func FindVacantDrive() (uint, error) {
 	bits, err := windows.GetLogicalDrives()
 	if err != nil {
