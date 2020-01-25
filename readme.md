@@ -36,7 +36,7 @@ Find file servers and their shared folders
 -------------------------------------------
 
 
-```
+```go
 package main
 
 import (
