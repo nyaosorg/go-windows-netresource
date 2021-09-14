@@ -13,7 +13,7 @@ import (
     "os"
     "os/exec"
 
-    "github.com/zetamatta/go-windows-netresource"
+    "github.com/nyaosorg/go-windows-netresource"
 )
 
 func main() {
@@ -40,7 +40,7 @@ Find file servers and their shared folders
 package main
 
 import (
-    "github.com/zetamatta/go-windows-netresource"
+    "github.com/nyaosorg/go-windows-netresource"
 )
 
 func main() {
