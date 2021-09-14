@@ -1,9 +1,10 @@
+//go:build run
 // +build run
 
 package main
 
 import (
-	"github.com/zetamatta/go-windows-netresource"
+	"github.com/nyaosorg/go-windows-netresource"
 )
 
 func main() {

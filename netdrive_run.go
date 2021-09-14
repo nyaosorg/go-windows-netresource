@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package main
@@ -5,7 +6,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/zetamatta/go-windows-netresource"
+	"github.com/nyaosorg/go-windows-netresource"
 )
 
 func main() {

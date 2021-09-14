@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/zetamatta/go-windows-netresource"
+	"github.com/nyaosorg/go-windows-netresource"
 )
 
 func main() {

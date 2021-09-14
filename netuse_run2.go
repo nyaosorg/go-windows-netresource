@@ -1,3 +1,4 @@
+//go:build run
 // +build run
 
 package main
@@ -6,7 +7,7 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/zetamatta/go-windows-netresource"
+	"github.com/nyaosorg/go-windows-netresource"
 )
 
 func main() {
